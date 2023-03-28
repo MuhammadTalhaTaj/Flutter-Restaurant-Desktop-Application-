@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/theme.dart';
+import 'package:intel_comm_flutter/services/user.dart';
+import 'package:intel_comm_flutter/views/welcome/welcome.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,11 +13,26 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<User>(
+          create: (_) => User(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Intel_Comm',
+        // useInheritedMediaQuery: true,
+        // locale: DevicePreview.locale(context),
+        // builder: (context, myWidget) {
+        //   // myWidget = DevicePreview.appBuilder(context, myWidget);
+        //   myWidget = BotToastInit()(context, myWidget);
+        //   return myWidget;
+        // },
+        // navigatorObservers: [BotToastNavigatorObserver()],
+        // navigatorKey: navigatorKey,
+        // theme: lightThemeDataCustom,
+        theme: darkThemeDataCustom,
+        home: Welcome(),
       ),
     );
   }
