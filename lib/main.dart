@@ -31,7 +31,8 @@ class MainApp extends StatelessWidget {
         // navigatorObservers: [BotToastNavigatorObserver()],
         // navigatorKey: navigatorKey,
         // theme: lightThemeDataCustom,
-        theme: darkThemeDataCustom,
+        darkTheme: darkTheme,
+        theme: darkTheme,
         home: Welcome(),
       ),
     );

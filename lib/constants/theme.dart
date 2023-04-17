@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intel_comm_flutter/constants/color_scheme.dart';
-import 'package:material_color_generator/material_color_generator.dart';
 
-ThemeData lightThemeDataCustom = _buildLightTheme();
+const COLOR_PRIMARY = Color(0x2D6E7E);
+const COLOR_ACCENT = Color(0xC6DE41);
 
-ThemeData _buildLightTheme() {
-  ThemeData base = ThemeData.light();
+ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  // primaryColor: COLOR_PRIMARY,
+  // floatingActionButtonTheme:
+  //     FloatingActionButtonThemeData(backgroundColor: COLOR_ACCENT),
+  // elevatedButtonTheme: ElevatedButtonThemeData(
+  //   style: ButtonStyle(
+  //     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+  //       EdgeInsets.symmetric(
+  //         vertical: 10,
+  //         horizontal: 10,
+  //       ),
+  //     ),
+  //   ),
+  // ),
+  textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme).apply(
+    fontFamily: GoogleFonts.poppins().fontFamily,
+  ),
+);
 
-  return base.copyWith(
-    colorScheme: lightColorScheme,
-    // primaryColor: lightColorScheme.primary,
-    // accentColor: Colors.amber,
-    scaffoldBackgroundColor: Colors.grey[100],
-    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme).apply(
-      fontFamily: GoogleFonts.poppins().fontFamily,
-    ),
-  );
-}
 
-ThemeData darkThemeDataCustom = _buildDarkTheme();
-
-ThemeData _buildDarkTheme() {
-  ThemeData base = ThemeData.dark();
-  return base.copyWith(
-
-
-    
-    colorScheme: darkColorScheme,
-    // primaryColor: darkColorScheme.primary,
-    // scaffoldBackgroundColor: darkColorScheme.background,
-    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme).apply(
+/* text theme
+textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme).apply(
 
       fontFamily: GoogleFonts.poppins().fontFamily,
     ),
-  );
-}
+*/
