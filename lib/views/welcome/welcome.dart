@@ -49,7 +49,7 @@ class _WelcomeState extends State<Welcome> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignUp()),
+                    MaterialPageRoute(builder: (context) => SignUpPage()),
                   );
                 },
                 child: Container(

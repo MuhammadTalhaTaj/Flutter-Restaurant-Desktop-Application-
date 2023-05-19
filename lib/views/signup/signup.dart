@@ -6,22 +6,33 @@ import 'package:intel_comm_flutter/services/user.dart';
 import 'package:intel_comm_flutter/views/home/home.dart';
 import 'package:provider/provider.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
-
+class SignUpPage extends StatefulWidget {
   @override
-  State<SignUp> createState() => _SignUpState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpState extends State<SignUp> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+  String? _username;
+  String? _password;
 
   Future<void> signUpApiCall(String username, String password) async {
     User? customUser = context.read<User>();
 
     var url = Uri.parse('http://localhost:7213/createUser');
-    var body = json.encode({'username': username, 'password': password});
+    var body = json.encode({
+      "company_id": 111,
+      "username": username,
+      "password": password,
+      "isOwner": 0,
+      "created_by": "test",
+      "email": "test@test.com",
+      "phone": "0123456789",
+      "country_code": "+92",
+      "first_name": "English",
+      "last_name": "Alphabets"
+    });
+    // var body = json.encode({'username': username, 'password': password});
     var response = await http.post(
       url,
       body: body,
@@ -54,32 +65,51 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        title: Text('Sign Up'),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            TextFormField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Username',
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Username'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _username = value,
               ),
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Password',
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _password = value,
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                signUpApiCall(usernameController.text, passwordController.text);
-              },
-              child: Text("Sign Up"),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      // TODO Submit data to server
+                      signUpApiCall(_username!, _password!);
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
