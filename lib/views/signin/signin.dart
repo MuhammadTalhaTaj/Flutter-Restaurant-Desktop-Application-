@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:intel_comm_flutter/services/user.dart';
+import 'package:flutter/services.dart';
+import 'package:intel_comm_flutter/components/IntelCommLogo.dart';
+import 'package:intel_comm_flutter/components/gaps.dart';
 import 'package:intel_comm_flutter/views/home/home.dart';
-import 'package:provider/provider.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -14,96 +12,159 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  Future<String?> SignInApiCall(String username, String password) async {
-    User? customUser = context.read<User>();
-    print("$username $password");
-    var url = Uri.parse('http://localhost:7213/loginUser');
-    var body = json.encode({'username': username, 'password': password});
-    var response = await http.post(
-      url,
-      body: body,
-      headers: {"Content-Type": "application/json"},
-    );
-
-    var newResponse = jsonDecode(response.body.toString());
-
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-
-    if (response.statusCode == 200) {
-      customUser.setUser(
-          username, newResponse["user_id"], newResponse["isSubscribed"]);
-
-      //navigate to home and remove all previous routes
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Home()),
-          (Route<dynamic> route) => false);
-
-      //
-    } else {
-      //todo show error;
-      print(newResponse);
-    }
-
-    return "";
-  }
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    ColorScheme clr = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Sign In"),
-      ),
       body: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          // color: Colors.grey[600],
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * .35,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
           children: [
-            TextFormField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Username',
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .1,
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Password',
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .1,
-            ),
-            InkWell(
-              onTap: () {
-                SignInApiCall(usernameController.text, passwordController.text);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.purple,
-                ),
-                padding: EdgeInsets.all(8),
-                width: MediaQuery.of(context).size.width * .2,
-                child: Center(
-                  child: Text("Sign In"),
+            Container(
+              width: size.width / 2,
+              height: size.height,
+              child: Center(
+                child: IntelCommLogo(
+                  fontSize: 50,
                 ),
               ),
             ),
+            Container(
+              width: size.width / 2,
+              height: size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // todo heading welcome
+                  Container(
+                    width: size.width / 4,
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Welcome",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 38,
+                                color: clr.primary,
+                              ),
+                            ),
+                            Text(
+                              "Please sign in to continue",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w100,
+                                fontSize: 12,
+                                color: clr.outline,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // todo username inputfield
+                  Container(
+                    width: size.width / 4,
+                    child: TextField(
+                      controller: usernameController,
+                      decoration: InputDecoration(
+                        hintText: "Username or Email",
+                      ),
+                    ),
+                  ),
+
+                  // todo password input field
+                  Container(
+                    width: size.width / 4,
+                    child: TextField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                      ),
+                    ),
+                  ),
+
+                  ygap(),
+
+                  //todo sign in button
+                  InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    ),
+                    child: Container(
+                      width: size.width / 4,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: clr.primaryContainer,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          "Sign In",
+                          style: TextStyle(
+                            color: clr.onPrimaryContainer,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  ygap(),
+
+                  //todo or
+                  Text(
+                    "or",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+
+                  ygap(),
+
+                  //todo google sign in feature
+
+                  Container(
+                    width: size.width / 6,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: clr.secondaryContainer,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Sign in with Google",
+                        style: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer),
+                      ),
+                    ),
+                  ),
+
+                  ygap(),
+
+                  //todo forgot password
+                  Text(
+                    "Forgot Password",
+                    style: TextStyle(color: clr.primary),
+                  ),
+
+                  ygap(),
+
+                  //todo redirect to sign up
+                  Text(
+                    "Don't have an account? Go to Sign up",
+                    style: TextStyle(color: clr.outline, fontSize: 12),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

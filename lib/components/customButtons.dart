@@ -14,7 +14,7 @@ class SideBarButton extends StatefulWidget {
 class _SideBarButtonState extends State<SideBarButton> {
   @override
   Widget build(BuildContext context) {
-    User? customUser = context.read<User>();
+    // User? customUser = context.read<User>();
     Size size = MediaQuery.of(context).size;
 
     return InkWell(

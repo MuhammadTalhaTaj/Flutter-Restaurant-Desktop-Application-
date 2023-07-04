@@ -15,7 +15,7 @@ class SideBar extends StatefulWidget {
 class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
-    User? customUser = context.read<User>();
+    // User? customUser = context.read<User>();
     Size size = MediaQuery.of(context).size;
 
     return Container(

@@ -1,76 +1,95 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intel_comm_flutter/services/user.dart';
-import 'package:provider/provider.dart';
+import 'package:intel_comm_flutter/components/IconWidgets.dart';
+import 'package:intel_comm_flutter/components/gaps.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBar({
+    super.key,
+    required this.clr,
+  });
+
+  final ColorScheme clr;
 
   @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size(double.maxFinite, 80);
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    User? customUser = context.read<User>();
-    Size size = MediaQuery.of(context).size;
-
-    //
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return AppBar(
+      title: Row(
         children: [
-          Container(
-            width: 180,
-            // color: Colors.red[100],
-            child: AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  'intel_comm',
-                  speed: Duration(
-                    milliseconds: 100,
+          Expanded(
+            flex: 7,
+            child: Row(
+              children: [
+                //todo back button
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: clr.onPrimary,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: clr.primary,
                   ),
-                  textStyle: TextStyle(
-                      // fontSize: 50,
-                      ),
                 ),
-                TypewriterAnimatedText(
-                  'Intelligent Commerce',
-                  speed: Duration(
-                    milliseconds: 100,
-                  ),
-                  textStyle: TextStyle(
-                      // fontSize: 50,
-                      ),
+
+                xgap(),
+
+                //todo breadcrumbs
+                Row(
+                  children: [
+                    Text(
+                      "Dashboard",
+                      style: bodyTextStyle(),
+                    ),
+                    xgap(),
+                    Icon(Icons.arrow_forward_ios_rounded),
+                    xgap(),
+                    Text(
+                      "Sales Statistics",
+                      style: bodyTextStyle(),
+                    ),
+                  ],
                 ),
+
+                xgap(),
               ],
             ),
-          ),
-          Text(
-            size.width.toString() + "*" + size.height.toString(),
           ),
 
-          //user container
-          Container(
-            width: 180,
+          //todo search bar
+          Expanded(
+            flex: 2,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CircleAvatar(
-                  child: Text("A"),
+                //todo notification icon
+                MediumIconWidget(
+                  icon: Icons.notifications_active_rounded,
                 ),
-                Text("Saud"),
+
+                xgap(),
+
+                //todo timer icon
+                MediumIconWidget(icon: Icons.timelapse_outlined),
+
+                xgap(),
+
+                //todo textfield search
+                Expanded(
+                  child: LayoutBuilder(builder: (context, parentConstraints) {
+                    return Container(
+                      // width: parentConstraints.maxWidth * .2,
+                      child: TextField(
+                        decoration: InputDecoration(hintText: "Search..."),
+                      ),
+                    );
+                  }),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
