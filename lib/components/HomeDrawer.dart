@@ -32,6 +32,7 @@ class HomeDrawer extends StatelessWidget {
               text: "Dashboard",
               icon: Icons.dashboard_rounded,
               isActive: true,
+              navigateFunc: () {},
             ),
 
             ygap(),
@@ -42,6 +43,7 @@ class HomeDrawer extends StatelessWidget {
               text: "Food & Drinks",
               icon: Icons.fastfood_rounded,
               isActive: false,
+              navigateFunc: () {},
             ),
 
             ygap(),
@@ -52,6 +54,7 @@ class HomeDrawer extends StatelessWidget {
               text: "Messages",
               icon: Icons.message,
               isActive: false,
+              navigateFunc: () {},
             ),
 
             ygap(),
@@ -62,6 +65,7 @@ class HomeDrawer extends StatelessWidget {
               text: "Dashboard",
               icon: Icons.calculate_sharp,
               isActive: false,
+              navigateFunc: () {},
             ),
 
             ygap(),
@@ -73,6 +77,19 @@ class HomeDrawer extends StatelessWidget {
               text: "Notifications",
               icon: Icons.notifications_active,
               isActive: false,
+              navigateFunc: () {},
+            ),
+
+            ygap(),
+
+            //todo cart
+
+            DrawerLink(
+              clr: clr,
+              text: "Cart",
+              icon: Icons.notifications_active,
+              isActive: false,
+              navigateFunc: () {},
             ),
 
             ygap(),
@@ -84,6 +101,7 @@ class HomeDrawer extends StatelessWidget {
               text: "Support",
               icon: Icons.support_agent_outlined,
               isActive: false,
+              navigateFunc: () {},
             ),
 
             //todo profile container

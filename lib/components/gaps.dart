@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
 class ygap extends StatelessWidget {
-  const ygap({super.key});
+  ygap({super.key, this.height});
+
+  double? height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 20,
+      height: height != null ? height : 20,
     );
   }
 }
 
 class xgap extends StatelessWidget {
-  const xgap({super.key});
+  xgap({super.key, this.width});
+
+  double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 20,
+      width: width != null ? width : 20,
     );
   }
 }

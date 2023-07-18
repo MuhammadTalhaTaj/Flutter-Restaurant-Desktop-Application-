@@ -108,14 +108,11 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: WrapCrossAlignment.start,
                   children: [
                     //todo linechart
-                    Container(
-                      decoration: BoxDecoration(
-                        color: clr.onSecondary,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      width: 400,
+                    HomeDefaultContainer(
+                      clr: clr,
                       height: 400,
-                      child: LineChart(
+                      width: 400,
+                      InputWidget: LineChart(
                         LineChartData(
                           lineBarsData: [
                             LineChartBarData(
@@ -142,17 +139,12 @@ class _HomeState extends State<Home> {
                       ),
                     ),
 
-                    xgap(),
-
                     //todo chart
-                    Container(
-                      decoration: BoxDecoration(
-                        color: clr.onSecondary,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    HomeDefaultContainer(
+                      clr: clr,
                       width: 400,
                       height: 400,
-                      child: PieChart(
+                      InputWidget: PieChart(
                         swapAnimationDuration:
                             Duration(milliseconds: 150), // Optional
                         swapAnimationCurve: Curves.linear, // Optional
@@ -168,9 +160,6 @@ class _HomeState extends State<Home> {
                       ),
                     ),
 
-                    ygap(),
-                    xgap(),
-
                     //kpi's
                     Wrap(
                       alignment: WrapAlignment.start,
@@ -178,14 +167,11 @@ class _HomeState extends State<Home> {
                       direction: Axis.vertical,
                       children: [
                         //
-                        Container(
+                        HomeDefaultContainer(
+                          clr: clr,
                           width: 160,
                           height: 100,
-                          decoration: BoxDecoration(
-                            color: clr.onSecondary,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
+                          InputWidget: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -207,17 +193,13 @@ class _HomeState extends State<Home> {
                           ),
                         ),
 
-                        ygap(),
-
                         //
-                        Container(
-                          width: 160,
+
+                        HomeDefaultContainer(
+                          clr: clr,
                           height: 100,
-                          decoration: BoxDecoration(
-                            color: clr.onSecondary,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
+                          width: 160,
+                          InputWidget: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -255,33 +237,30 @@ class _HomeState extends State<Home> {
                     //!   },
                     //!   child: Text("go to test"),
                     //! ),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        color: clr.onSecondary,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    HomeDefaultContainer(
+                      clr: clr,
                       width: 400,
                       height: 300,
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      child: Column(
+                      InputWidget: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Trending Dishes",
-                                style: bodyTextStyle(),
-                              ),
-                              //todo drop down
-                              DropdownButtonExample(),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Trending Dishes",
+                                  style: bodyTextStyle(),
+                                ),
+                                //todo drop down
+                                DropdownButtonExample(),
+                              ],
+                            ),
                           ),
 
                           //
                           Container(
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.symmetric(horizontal: 20),
                             margin: EdgeInsets.symmetric(horizontal: 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -303,30 +282,122 @@ class _HomeState extends State<Home> {
                                 return Container(
                                   padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                            child: Text(
-                                              listData[index]["name"]
-                                                  .toString()[0],
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              child: Text(
+                                                listData[index]["name"]
+                                                    .toString()[0],
+                                              ),
                                             ),
-                                          ),
-                                          xgap(),
-                                          Text(
-                                              listData[index]["name"]
-                                                  .toString(),
-                                              style: bodyTextStyle()),
-                                        ],
-                                      ),
-                                      Text(
-                                        listData[index]["orders"].toString(),
-                                        style: bodyTextStyle(),
-                                      ),
-                                    ],
+                                            xgap(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                                listData[index]["name"]
+                                                    .toString(),
+                                                style: bodyTextStyle()),
+                                          ],
+                                        ),
+                                        Text(
+                                          listData[index]["orders"].toString(),
+                                          style: bodyTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    HomeDefaultContainer(
+                      clr: clr,
+                      width: 400,
+                      height: 300,
+                      InputWidget: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Best Employee",
+                                  style: bodyTextStyle(),
+                                ),
+                                //todo drop down
+                                DropdownButtonExample(),
+                              ],
+                            ),
+                          ),
+
+                          //
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            margin: EdgeInsets.symmetric(horizontal: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Employee",
+                                ),
+                                Text(
+                                  "Earnings",
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: listData.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  padding: EdgeInsets.all(5),
+                                  margin: EdgeInsets.symmetric(horizontal: 5),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              child: Text(
+                                                listData[index]["name"]
+                                                    .toString()[0],
+                                              ),
+                                            ),
+                                            xgap(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                                listData[index]["name"]
+                                                    .toString(),
+                                                style: bodyTextStyle()),
+                                          ],
+                                        ),
+                                        Text(
+                                          listData[index]["orders"].toString(),
+                                          style: bodyTextStyle(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -344,6 +415,33 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class HomeDefaultContainer extends StatelessWidget {
+  HomeDefaultContainer(
+      {super.key,
+      required this.clr,
+      required this.InputWidget,
+      this.height,
+      this.width});
+
+  final ColorScheme clr;
+  Widget InputWidget;
+  double? width, height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: clr.onSecondary,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      margin: EdgeInsets.all(20),
+      width: width != null ? width : null,
+      height: height != null ? height : null,
+      child: InputWidget,
     );
   }
 }
