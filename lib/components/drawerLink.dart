@@ -19,7 +19,7 @@ class DrawerLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => navigateFunc,
+      onTap: () => navigateFunc(),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(

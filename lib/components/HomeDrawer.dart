@@ -2,17 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:intel_comm_flutter/components/IntelCommLogo.dart';
 import 'package:intel_comm_flutter/components/drawerLink.dart';
 import 'package:intel_comm_flutter/components/gaps.dart';
+import 'package:intel_comm_flutter/views/addToCart/addtocart.dart';
+import 'package:intel_comm_flutter/views/cart/cart.dart';
+import 'package:intel_comm_flutter/views/foodAndDrinkCategories/foodAndDrinkCategories.dart';
+import 'package:intel_comm_flutter/views/home/home.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeDrawer extends StatelessWidget {
+import '../views/Bills/bills.dart';
+
+
+
+
+
+class HomeDrawer extends ConsumerStatefulWidget {
   const HomeDrawer({
     super.key,
     required this.clr,
+    required this.selectedIndex,
   });
 
   final ColorScheme clr;
+  final selectedIndex;
+
+  @override
+  ConsumerState<HomeDrawer> createState() => _HomeDrawerState();
+}
+
+class _HomeDrawerState extends ConsumerState<HomeDrawer> {
+
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return Drawer(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -28,44 +51,58 @@ class HomeDrawer extends StatelessWidget {
 
             //todo dashboard link
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Dashboard",
               icon: Icons.dashboard_rounded,
-              isActive: true,
-              navigateFunc: () {},
+              isActive: widget.selectedIndex == 0,
+              navigateFunc: () {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
+              },
             ),
 
             ygap(),
 
             //todo food and drinks link
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Food & Drinks",
               icon: Icons.fastfood_rounded,
-              isActive: false,
-              navigateFunc: () {},
+              isActive: widget.selectedIndex == 1,
+              navigateFunc: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FoodAndDrinkCategories()),
+                );
+              },
             ),
 
             ygap(),
 
             //todo messages link
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Messages",
               icon: Icons.message,
-              isActive: false,
-              navigateFunc: () {},
+              isActive: widget.selectedIndex ==  2,
+              navigateFunc: () {
+
+              },
             ),
 
             ygap(),
 
             //todo bills link
             DrawerLink(
-              clr: clr,
-              text: "Dashboard",
-              icon: Icons.calculate_sharp,
-              isActive: false,
-              navigateFunc: () {},
+              clr: widget.clr,
+              text: "Bills",
+              icon: Icons.note_alt_rounded,
+              isActive: widget.selectedIndex ==  3,
+              navigateFunc: () {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Bills(),));
+              },
             ),
 
             ygap(),
@@ -73,11 +110,13 @@ class HomeDrawer extends StatelessWidget {
             //todo notifications
 
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Notifications",
               icon: Icons.notifications_active,
-              isActive: false,
-              navigateFunc: () {},
+              isActive: widget.selectedIndex ==  4,
+              navigateFunc: () {
+
+              },
             ),
 
             ygap(),
@@ -85,11 +124,17 @@ class HomeDrawer extends StatelessWidget {
             //todo cart
 
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Cart",
               icon: Icons.notifications_active,
-              isActive: false,
-              navigateFunc: () {},
+              isActive:widget.selectedIndex == 5,
+              navigateFunc: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddToCart()),
+                );
+              }
             ),
 
             ygap(),
@@ -97,11 +142,14 @@ class HomeDrawer extends StatelessWidget {
             //todo support
 
             DrawerLink(
-              clr: clr,
+              clr: widget.clr,
               text: "Support",
               icon: Icons.support_agent_outlined,
-              isActive: false,
-              navigateFunc: () {},
+              isActive:widget.selectedIndex ==  6,
+              navigateFunc: () {
+
+
+              },
             ),
 
             //todo profile container

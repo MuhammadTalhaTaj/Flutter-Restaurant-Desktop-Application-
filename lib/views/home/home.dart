@@ -1,3 +1,4 @@
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intel_comm_flutter/components/HomeDrawer.dart';
@@ -23,11 +24,12 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     ColorScheme clr = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: HomeAppBar(clr: clr),
-      drawer: HomeDrawer(clr: clr),
+      drawer: HomeDrawer(clr: clr,selectedIndex: 0,),
       body: Container(
         padding: EdgeInsets.all(20), //! padding for the whole body
         child: SingleChildScrollView(
@@ -445,3 +447,4 @@ class HomeDefaultContainer extends StatelessWidget {
     );
   }
 }
+

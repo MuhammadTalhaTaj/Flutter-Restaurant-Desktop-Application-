@@ -51,7 +51,7 @@ class DontUseHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Update with your UI    Muhammad Talha Taj',
+                'Update with your UI',
               ),
             ],
           ),
