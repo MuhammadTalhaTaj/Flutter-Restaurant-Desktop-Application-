@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intel_comm_flutter/views/Bills/components/customDropDownButton.dart';
+import 'package:intel_comm_flutter/views/Bills/components/customtextfield.dart';
+import 'package:intel_comm_flutter/views/Bills/components/detailsCard.dart';
 import 'package:intel_comm_flutter/views/Bills/components/orderCardView.dart';
+import 'package:intel_comm_flutter/views/Bills/components/rowData.dart';
+import 'package:intel_comm_flutter/views/addToCart/components/rowData.dart';
 
 import '../../components/HomeDrawer.dart';
 import '../../components/appbar.dart';
 import '../../constants/textStyles.dart';
-
-
+import 'components/randomData.dart';
 
 class Bills extends StatefulWidget {
   const Bills({Key? key}) : super(key: key);
@@ -18,65 +21,6 @@ class Bills extends StatefulWidget {
 class _BillsState extends State<Bills> {
   String dropdownValue = list.first;
 
-  final List<Map<String, dynamic>> randomDataList = [
-    {
-      'orderNumber': 'Order #35',
-      'status': 'Active',
-      'amount': 42.0,
-      'tableNumber': 'Table 2B',
-      'guestCount': 2,
-      'time': '14:25',
-    },
-    {
-      'orderNumber': 'Order #12',
-      'status': 'Inactive',
-      'amount': 28.5,
-      'tableNumber': 'Table 1A',
-      'guestCount': 4,
-      'time': '12:10',
-    },
-    {
-      'orderNumber': 'Order #77',
-      'status': 'Active',
-      'amount': 85.75,
-      'tableNumber': 'Table 5C',
-      'guestCount': 1,
-      'time': '18:45',
-    },
-    {
-      'orderNumber': 'Order #77',
-      'status': 'Active',
-      'amount': 85.75,
-      'tableNumber': 'Table 5C',
-      'guestCount': 1,
-      'time': '18:45',
-    },
-    {
-      'orderNumber': 'Order #77',
-      'status': 'Active',
-      'amount': 85.75,
-      'tableNumber': 'Table 5C',
-      'guestCount': 1,
-      'time': '18:45',
-    },
-    {
-      'orderNumber': 'Order #77',
-      'status': 'Active',
-      'amount': 85.75,
-      'tableNumber': 'Table 5C',
-      'guestCount': 1,
-      'time': '18:45',
-    },
-    {
-      'orderNumber': 'Order #77',
-      'status': 'Active',
-      'amount': 85.75,
-      'tableNumber': 'Table 5C',
-      'guestCount': 1,
-      'time': '18:45',
-    },
-    // Add more random data as needed
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +33,7 @@ class _BillsState extends State<Bills> {
       appBar: HomeAppBar(clr: clr),
       drawer: HomeDrawer(
         clr: clr,
-        selectedIndex: 0,
+        selectedIndex: 3,
       ),
       body: Container(
         child: Row(
@@ -97,7 +41,7 @@ class _BillsState extends State<Bills> {
             Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(40),
+                  padding: EdgeInsets.only(left: 40, top: 40, right: 40),
                   color: clr.primaryContainer,
                   height: screenHeight * .8,
                   width: size.width * 0.4,
@@ -127,15 +71,13 @@ class _BillsState extends State<Bills> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           CustomDropDownButton(
-                              dropdownValue,
+                            dropdownValue,
                             (String? value) {
                               setState(() {
                                 dropdownValue = value!;
                               });
                             },
-
                           ),
                           CustomDropDownButton(
                             dropdownValue,
@@ -144,43 +86,131 @@ class _BillsState extends State<Bills> {
                                 dropdownValue = value!;
                               });
                             },
-
                           ),
                         ],
                       ),
+                      Flexible(
+                        child: SizedBox(
+                            height: screenHeight * 0.8,
+                            child: ListView.builder(
+                                itemCount: randomDataList.length,
+                                itemBuilder: (context, index) {
+                                  Map<String, dynamic> item =
+                                      randomDataList[index];
 
-         Expanded(
-           child: SizedBox(
-    height: screenHeight*0.7,
-             child: ListView.builder(
-    itemCount: randomDataList.length,
-        itemBuilder: (context, index) {
-      Map<String, dynamic> item = randomDataList[index];
-
-
-      return Padding(
-        padding: EdgeInsets.all(5),
-            child: OrderCardView());
-
-    })),
-         )
-
-    ],
+                                  return Padding(
+                                      padding: EdgeInsets.all(5),
+                                      child: OrderCardView());
+                                })),
+                      )
+                    ],
                   ),
                 ),
-                Container(
-                  color: Colors.yellow,
-                  height: screenHeight * 0.2,
-                  width: size.width * 0.4,
-                )
+                Expanded(
+                  child: Container(
+                      width: size.width * 0.4,
+                      color: clr.inversePrimary,
+                      child: Center(
+                          child: CustomTextField(
+                        text: 'Search for Order...',
+                      ))),
+                ),
               ],
             ),
             Container(
+              padding: EdgeInsets.all(40),
               color: clr.secondaryContainer,
               height: double.infinity,
               width: size.width * 0.6,
-            ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Order #35",
+                        style: headingTextStyle(),
+                      ),
+                      ElevatedButton(onPressed: () {}, child: Text('Active'))
+                    ],
+                  ),
+                  Text(
+                    'Details',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DetailsCard(
+                        upperText: 'Table',
+                        lowerText: '2B',
+                      ),
+                      DetailsCard(
+                        upperText: 'Guests',
+                        lowerText: '2',
+                      ),
+                      DetailsCard(
+                        upperText: 'Customer',
+                        lowerText: 'Kate Woods',
+                      ),
+                      DetailsCard(
+                        upperText: 'Payment',
+                        lowerText: 'By Cash',
+                      ),
+                    ],
+                  ),
+                  Text('Order info',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Container(
+                    padding: EdgeInsets.all(0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Items',
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                        Text(
+                          'Price',
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                  ),
 
+                    Container(
+                      height: screenHeight * 0.3,
+                      child: ListView.builder(
+                        itemCount: sampleBillItems.length,
+                        itemBuilder: (context, index) {
+                          BillItem item = sampleBillItems[index];
+                          return RowDataBills(
+                            imageProvider: AssetImage(item.imageAsset),
+                            text: item.text,
+                            text2: item.price,
+                          );
+                        },
+                      ),
+
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    Text('Total',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                    Text('\$14.71',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+                  ],),
+                  
+                  Center(child: Container(
+                    width: 500,
+                      height: 50,
+                      child: ElevatedButton(onPressed: (){}, child: Text('Charge Customer \$14.71'))))
+
+                ],
+              ),
+            ),
           ],
         ),
       ),

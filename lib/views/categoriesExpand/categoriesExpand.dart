@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/views/categoriesExpand/components/itemCard.dart';
 import 'package:intel_comm_flutter/views/foodAndDrinkCategories/components/itemCard.dart';
 
 import '../../components/HomeDrawer.dart';
@@ -62,12 +63,12 @@ class _CategoriesExpandState extends State<CategoriesExpand> {
                 crossAxisCount: 3,
                 children: itemsData.map((item) {
                   int index = itemsData.indexOf(item);
-                  return ItemCard(
+                  return ItemCardExpand(
                     imageProvider: item['image'],
                     text: item['text'],
                     isSelected: _selectedItemIndex == index,
                     onTap: () {
-                      //_selectItem(index)
+                      _selectItem(index);
 
 
                      showModalBottomSheet<void>(

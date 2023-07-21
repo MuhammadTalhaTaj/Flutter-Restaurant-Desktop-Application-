@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ItemCard extends StatefulWidget {
+class ItemCardExpand extends StatefulWidget {
   final ImageProvider imageProvider;
   final String text;
   final bool isSelected;
   final VoidCallback onTap;
-  const ItemCard({Key? key, required this.imageProvider, required this.text, required this.isSelected, required this.onTap}) : super(key: key);
+  const ItemCardExpand({Key? key, required this.imageProvider, required this.text, required this.isSelected, required this.onTap}) : super(key: key);
 
   @override
-  State<ItemCard> createState() => _ItemCardState();
+  State<ItemCardExpand> createState() => _ItemCardExpandState();
 }
 
-class _ItemCardState extends State<ItemCard> {
+class _ItemCardExpandState extends State<ItemCardExpand> {
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,9 @@ class _ItemCardState extends State<ItemCard> {
        ),
 
           Flexible(child: Text(widget.text)),
+          Flexible(child: Text("15g",style: TextStyle(color: Colors.white70),)),
+
+          Flexible(child: Text("\$3.50",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)),
 
         ],
       ),

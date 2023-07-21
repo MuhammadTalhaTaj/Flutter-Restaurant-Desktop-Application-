@@ -8,7 +8,7 @@ class RowData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Expanded(
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,7 +43,8 @@ class RowData extends StatelessWidget {
                  Text('1x'),
                  SizedBox(width: 13,),
 
-                 SizedBox(
+                 Container(
+                   padding: EdgeInsets.symmetric(horizontal: 30),
 
                      child: ElevatedButton(
                        onPressed: () {},
