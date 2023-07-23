@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SettingOptionButton extends StatefulWidget {
+  final Color? customColor;
   final IconData iconData;
   final String text;
+  final VoidCallback onPressed;
 
-  const SettingOptionButton(
-      {Key? key, required this.iconData, required this.text})
+   SettingOptionButton(
+      {Key? key, required this.iconData, required this.text,this.customColor, required this.onPressed})
       : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class _SettingOptionButtonState extends State<SettingOptionButton> {
     return Container(
       height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed:widget.onPressed,
         child: Row(
           children: [
             Icon(widget.iconData),
