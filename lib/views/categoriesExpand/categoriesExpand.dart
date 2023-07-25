@@ -40,15 +40,15 @@ class _CategoriesExpandState extends State<CategoriesExpand> {
     ColorScheme clr = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: HomeAppBar(clr: clr),
+      appBar: HomeAppBar(clr: clr,text1: "Food & Drinks",text2:"Burgers"),
       drawer: HomeDrawer(clr: clr,selectedIndex: 1,),
       body: Container(
-
+color: clr.onPrimary,
         padding: EdgeInsets.all(45),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Burgers',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            Text('Burgers',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: clr.primary),),
             SizedBox(
               height: size.height*0.7,
               child: GridView.count(

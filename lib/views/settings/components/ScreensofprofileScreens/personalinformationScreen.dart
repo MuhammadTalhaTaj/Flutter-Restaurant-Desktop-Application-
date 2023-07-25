@@ -24,7 +24,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
         children: [
           Text(
             'Personal Information',
-            style: headingTextStyle(),
+            style: headingTextStyle(context),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

@@ -35,7 +35,7 @@ class _LoginAndPasswordState extends State<LoginAndPassword> {
               children: [
                 Text(
                   'Login & Password',
-                  style: headingTextStyle(),
+                  style: headingTextStyle(context),
                 ),
 
                 Row(
@@ -62,7 +62,7 @@ class _LoginAndPasswordState extends State<LoginAndPassword> {
                   ],
                 ),
 
-                Text('Sign in with social networks',style: headingTextStyle(),),
+                Text('Sign in with social networks',style: headingTextStyle(context),),
                 Text('Link your social account to sign in quickly next time'),
 
                 ConstrainedBox(

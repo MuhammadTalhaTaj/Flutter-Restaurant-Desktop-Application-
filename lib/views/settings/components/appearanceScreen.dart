@@ -33,11 +33,11 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
               children: [
                 Text(
                   "Appearance",
-                  style: headingTextStyle(),
+                  style: headingTextStyle(context),
                 ),
                 Text(
                   'Theme',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                  style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17),
                 ),
                 AppearanceRow(
                   forAndroid: widget.forAndroid,
@@ -54,12 +54,12 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
                   text: "Dark",
                 ),
 
-                Text('Size',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                Text('Size',style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                  Text('Font Size',style: TextStyle(fontSize: 14)),
+                  Text('Font Size',style: bodyTextStyle(context)),
                   SizedBox(
                     height: 35,
                       width: 100,
@@ -71,7 +71,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Card\'s Size',style: TextStyle(fontSize: 14)),
+                    Text('Card\'s Size',style: bodyTextStyle(context)),
                     SizedBox(
                         height: 35,
                         width: 100,

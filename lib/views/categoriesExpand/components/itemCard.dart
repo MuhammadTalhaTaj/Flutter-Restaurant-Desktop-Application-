@@ -16,9 +16,10 @@ class _ItemCardExpandState extends State<ItemCardExpand> {
   @override
   Widget build(BuildContext context) {
      return GestureDetector(
+
         onTap: widget.onTap,
         child: Card(
-        color: widget.isSelected ? Colors.green : null,
+        color: widget.isSelected ? Colors.green : Theme.of(context).colorScheme.primaryContainer,
 
 
 

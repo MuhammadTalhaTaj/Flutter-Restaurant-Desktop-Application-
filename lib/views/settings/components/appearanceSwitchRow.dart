@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
 class AppearanceRow extends StatelessWidget {
   final String text;
@@ -14,7 +15,7 @@ class AppearanceRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(text,style: TextStyle(fontSize: 14),),
+        Text(text,style: bodyTextStyle(context),),
         Switch(
           splashRadius: 50.0,
           value: forAndroid,

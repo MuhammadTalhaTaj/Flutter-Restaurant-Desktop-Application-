@@ -38,7 +38,7 @@ class _SettingOptionButtonState extends State<SettingOptionButton> {
         style: ElevatedButton.styleFrom(
             shape: LinearBorder(),
             elevation: 0,
-            backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+            backgroundColor: widget.customColor!=null?widget.customColor: Theme.of(context).colorScheme.primaryContainer,
             foregroundColor: Colors.white
         ),
       ),

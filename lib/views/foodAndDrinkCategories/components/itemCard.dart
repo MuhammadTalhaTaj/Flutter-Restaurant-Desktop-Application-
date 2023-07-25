@@ -18,7 +18,7 @@ class _ItemCardState extends State<ItemCard> {
      return GestureDetector(
         onTap: widget.onTap,
         child: Card(
-        color: widget.isSelected ? Colors.green : null,
+        color: widget.isSelected ? Colors.green : Theme.of(context).colorScheme.primaryContainer,
 
 
 

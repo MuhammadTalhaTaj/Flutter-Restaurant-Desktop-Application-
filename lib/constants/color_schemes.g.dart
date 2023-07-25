@@ -36,12 +36,19 @@ const lightColorScheme = ColorScheme(
 
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
+  //highlight
   primary: Color(0xFF12E600),
+  //backgroundColor
   onPrimary: Color.fromRGBO(2, 58, 0, 1),
+  //container
   primaryContainer: Color(0xFF035300),
   onPrimaryContainer: Color(0xFF77FF5F),
+
+  //highlight COlor
   secondary: Color(0xFF4FD8EB),
+  //backgroud color
   onSecondary: Color(0xFF00363D),
+  //contianer color
   secondaryContainer: Color(0xFF004F58),
   onSecondaryContainer: Color(0xFF97F0FF),
   tertiary: Color(0xFF4FD8EB),

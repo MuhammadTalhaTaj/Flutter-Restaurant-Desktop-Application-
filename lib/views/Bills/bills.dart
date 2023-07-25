@@ -30,7 +30,7 @@ class _BillsState extends State<Bills> {
 
     ColorScheme clr = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: HomeAppBar(clr: clr),
+      appBar: HomeAppBar(clr: clr,text1: "Bills",),
       drawer: HomeDrawer(
         clr: clr,
         selectedIndex: 3,
@@ -42,7 +42,7 @@ class _BillsState extends State<Bills> {
               children: [
                 Container(
                   padding: EdgeInsets.only(left: 40, top: 40, right: 40),
-                  color: clr.primaryContainer,
+                  color: clr.onPrimary,
                   height: screenHeight * .8,
                   width: size.width * 0.4,
                   child: Column(
@@ -53,7 +53,7 @@ class _BillsState extends State<Bills> {
                           children: [
                             Text(
                               'Bills',
-                              style: headingTextStyle(),
+                              style: headingTextStyle(context),
                             ),
                             InkWell(
                               child: Container(
@@ -109,7 +109,7 @@ class _BillsState extends State<Bills> {
                 Expanded(
                   child: Container(
                       width: size.width * 0.4,
-                      color: clr.inversePrimary,
+                      color: clr.onPrimary,
                       child: Center(
                           child: CustomTextField(
                         text: 'Search for Order...',
@@ -119,7 +119,7 @@ class _BillsState extends State<Bills> {
             ),
             Container(
               padding: EdgeInsets.all(40),
-              color: clr.secondaryContainer,
+              color: clr.onSecondary,
               height: double.infinity,
               width: size.width * 0.6,
               child: Column(
@@ -131,14 +131,14 @@ class _BillsState extends State<Bills> {
                     children: [
                       Text(
                         "Order #35",
-                        style: headingTextStyle(),
+                        style: headingTextStyle(context),
                       ),
                       ElevatedButton(onPressed: () {}, child: Text('Active'))
                     ],
                   ),
                   Text(
                     'Details',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,7 +162,7 @@ class _BillsState extends State<Bills> {
                     ],
                   ),
                   Text('Order info',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold)),
                   Container(
                     padding: EdgeInsets.all(0),
                     child: Row(
@@ -170,11 +170,11 @@ class _BillsState extends State<Bills> {
                       children: [
                         Text(
                           'Items',
-                          style: TextStyle(color: Colors.white70),
+                          style: bodyTextStyle(context),
                         ),
                         Text(
                           'Price',
-                          style: TextStyle(color: Colors.white70),
+                          style: bodyTextStyle(context),
                         ),
                       ],
                     ),
@@ -199,14 +199,14 @@ class _BillsState extends State<Bills> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    Text('Total',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                    Text('\$14.71',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+                    Text('Total',style: bodyTextStyle(context).copyWith(fontSize: 18,fontWeight: FontWeight.bold),),
+                    Text('\$14.71',style: bodyTextStyle(context).copyWith(fontSize: 18,fontWeight: FontWeight.bold),)
                   ],),
                   
                   Center(child: Container(
                     width: 500,
                       height: 50,
-                      child: ElevatedButton(onPressed: (){}, child: Text('Charge Customer \$14.71'))))
+                      child: ElevatedButton(onPressed: (){}, child: Text('Charge Customer \$14.71',style: TextStyle(color: Colors.white),),style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.secondary),)))
 
                 ],
               ),

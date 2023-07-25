@@ -28,13 +28,13 @@ class _CheckOutSettingsState extends State<CheckOutSettings> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Checkout Settings",style: headingTextStyle(),),
-              Text("Payment History",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
+              Text("Checkout Settings",style: headingTextStyle(context),),
+              Text("Payment History",style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17),),
               AppearanceRow(forAndroid: forAndroid, onPress: (value){setState(() {
                 forAndroid=value;
               });}, text: "Save Payment History"),
               Text('Clear history',style: TextStyle(fontSize: 14,color: Colors.blueAccent),),
-              Text("Payment Method",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
+              Text("Payment Method",style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17),),
               AppearanceRow(forAndroid: forAndroid, onPress: (value){setState(() {
                 forAndroid=value;
               });}, text: "Bank Card"),

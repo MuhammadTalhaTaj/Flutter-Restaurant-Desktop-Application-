@@ -24,11 +24,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
       children: [
         Text(
           'Notifications',
-          style: headingTextStyle(),
+          style: headingTextStyle(context),
         ),
         Text(
           'Select the notifications you want to receive',
-          style: bodyTextStyle(),
+          style: bodyTextStyle(context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,15 +37,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 width: 160,
                 child: Text(
                   'Notification',
-                  style: TextStyle(color: Colors.white70),
+                  style: bodyTextStyle(context),
                 )),
             Text(
               'Push',
-              style: TextStyle(color: Colors.white70),
+              style: bodyTextStyle(context),
             ),
             Text(
               'Email',
-              style: TextStyle(color: Colors.white70),
+              style: bodyTextStyle(context),
             ),
           ],
         ),

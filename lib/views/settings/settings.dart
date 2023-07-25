@@ -32,7 +32,7 @@ class _SettingsState extends State<Settings> {
 
     ColorScheme clr = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: HomeAppBar(clr: clr),
+      appBar: HomeAppBar(clr: clr,text1:"Settings",),
       drawer: HomeDrawer(
         clr: clr,
         selectedIndex: 6,
@@ -42,7 +42,7 @@ class _SettingsState extends State<Settings> {
           children: [
             Container(
                 padding: EdgeInsets.only(left: size.width * 0.04),
-                color: clr.primary,
+                color: clr.onPrimary,
                 width: size.width * .35,
                 height: double.infinity,
                 child: Container(
@@ -52,11 +52,11 @@ class _SettingsState extends State<Settings> {
                     children: [
                       Text(
                         'Settings',
-                        style: headingTextStyle(),
+                        style: headingTextStyle(context),
                       ),
                       Container(
                         margin: EdgeInsets.only(left: size.width * 0.02),
-                        color: clr.onPrimaryContainer,
+                        color: clr.primaryContainer,
                         height: screenHeight * .7,
                         child: Column(
                           children: [
@@ -122,7 +122,7 @@ class _SettingsState extends State<Settings> {
             Container(
               height: double.infinity,
               width: size.width * .65,
-              color: clr.secondaryContainer,
+              color: clr.onSecondary,
               child: Container(
                 padding: EdgeInsets.all(size.width*0.05),
                 child:screens[currentIndex],

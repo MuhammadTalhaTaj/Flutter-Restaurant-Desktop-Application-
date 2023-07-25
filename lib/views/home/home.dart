@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
     ColorScheme clr = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: HomeAppBar(clr: clr),
+      appBar: HomeAppBar(clr: clr,text1: "Dashboard"),
       drawer: HomeDrawer(clr: clr,selectedIndex: 0,),
       body: Container(
         padding: EdgeInsets.all(20), //! padding for the whole body
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Text(
                     "Dashboard",
-                    style: headingTextStyle(),
+                    style: headingTextStyle(context),
                   ),
                   ToggleButtons(
                     isSelected: isSelected,
@@ -190,7 +190,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ],
                               ),
-                              Text("21,908", style: headingTextStyle()),
+                              Text("21,908", style: headingTextStyle(context)),
                             ],
                           ),
                         ),
@@ -219,7 +219,7 @@ class _HomeState extends State<Home> {
                               ),
                               Text(
                                 "256",
-                                style: headingTextStyle(),
+                                style: headingTextStyle(context),
                               ),
                             ],
                           ),
@@ -252,7 +252,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   "Trending Dishes",
-                                  style: bodyTextStyle(),
+                                  style: bodyTextStyle(context),
                                 ),
                                 //todo drop down
                                 DropdownButtonExample(),
@@ -306,12 +306,12 @@ class _HomeState extends State<Home> {
                                             Text(
                                                 listData[index]["name"]
                                                     .toString(),
-                                                style: bodyTextStyle()),
+                                                style: bodyTextStyle(context)),
                                           ],
                                         ),
                                         Text(
                                           listData[index]["orders"].toString(),
-                                          style: bodyTextStyle(),
+                                          style: bodyTextStyle(context),
                                         ),
                                       ],
                                     ),
@@ -337,7 +337,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   "Best Employee",
-                                  style: bodyTextStyle(),
+                                  style: bodyTextStyle(context),
                                 ),
                                 //todo drop down
                                 DropdownButtonExample(),
@@ -391,12 +391,12 @@ class _HomeState extends State<Home> {
                                             Text(
                                                 listData[index]["name"]
                                                     .toString(),
-                                                style: bodyTextStyle()),
+                                                style: bodyTextStyle(context)),
                                           ],
                                         ),
                                         Text(
                                           listData[index]["orders"].toString(),
-                                          style: bodyTextStyle(),
+                                          style: bodyTextStyle(context),
                                         ),
                                       ],
                                     ),

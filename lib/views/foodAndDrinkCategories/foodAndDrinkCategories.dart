@@ -44,16 +44,16 @@ class _FoodAndDrinkCategoriesState extends State<FoodAndDrinkCategories> {
     ColorScheme clr = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: HomeAppBar(clr: clr),
+      appBar: HomeAppBar(clr: clr,text1: "Food & Drinks"),
       drawer: HomeDrawer(clr: clr,selectedIndex: 1,),
 
       body: Container(
-
+color: clr.onPrimary,
         padding: EdgeInsets.all(45),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Categories',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            Text('Categories',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: clr.primary),),
             SizedBox(
               height: size.height*0.7,
               child: GridView.count(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
 class DetailsCard extends StatelessWidget {
   final String upperText;
@@ -11,9 +12,9 @@ class DetailsCard extends StatelessWidget {
       child:
       Column(
         children: [
-          Text(upperText,style: TextStyle(color: Colors.white70),),
+          Text(upperText,style: bodyTextStyle(context),),
           SizedBox(height: 8,),
-          Text(lowerText,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+          Text(lowerText,style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold,fontSize: 17),),
 
         ],
       ),

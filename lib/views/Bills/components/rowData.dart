@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
 class RowDataBills extends StatelessWidget {
   final ImageProvider imageProvider;
@@ -19,12 +20,12 @@ class RowDataBills extends StatelessWidget {
                 children: [
                   Image(image: imageProvider,width: 35,height: 35,),
                   SizedBox(width: 15,),
-                  Text(text,style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(text,style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold),),
                 ],
               ),
             ),
 
-            Text('\$$text2',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Text('\$$text2',style: bodyTextStyle(context).copyWith(fontSize: 18,fontWeight: FontWeight.bold),),
 
 
 

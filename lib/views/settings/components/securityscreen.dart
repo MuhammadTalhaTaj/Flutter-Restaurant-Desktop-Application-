@@ -27,41 +27,41 @@ class _SecurityScreenState extends State<SecurityScreen> {
               children: [
                 Text(
                   "Security",
-                  style: headingTextStyle(),
+                  style: headingTextStyle(context),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.notifications_sharp),
+                    Icon(Icons.notifications_sharp,color:iconColor(context),),
                     SizedBox(width: 8,),
                     Text(
                       "Security alert",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                      style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                   ],
                 ),
-                Text('You will get alerts when someone tries logging in to your account form an unknown device.'),
+                Text('You will get alerts when someone tries logging in to your account form an unknown device.',style: bodyTextStyle(context),),
 
 
                 Text(
                   "Where you\'re logged in",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                  style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold, fontSize: 17),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.computer),
+                    Icon(Icons.computer,color: iconColor(context),),
                     SizedBox(width: 8,),
                     Text(
-                      "Mac . Ny.United States",
+                      "Mac . Ny.United States",style: bodyTextStyle(context),
                     ),
                   ],
                 ),
                 Text("Active Now",style: TextStyle(color: Colors.blue),),
                 Row(
                   children: [
-                    Icon(Icons.phone_android_sharp),
+                    Icon(Icons.phone_android_sharp,color:iconColor(context),),
                     SizedBox(width: 8,),
                     Text(
-                      "iPhone . Ny.United States",
+                      "iPhone . Ny.United States,",style: bodyTextStyle(context),
                     ),
                   ],
                 ),

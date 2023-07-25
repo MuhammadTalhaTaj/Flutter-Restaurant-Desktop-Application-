@@ -38,7 +38,7 @@ class _LanguageAndRegionScreenState extends State<LanguageAndRegionScreen> {
                 Text(
                   //
                   "Language & Region",
-                  style: headingTextStyle(),
+                  style: headingTextStyle(context),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,15 +46,17 @@ class _LanguageAndRegionScreenState extends State<LanguageAndRegionScreen> {
                     Text(
                       "Choose region",
                       style:
-                          TextStyle(fontWeight: FontWeight.w200, fontSize: 10),
+                      bodyTextStyle(context).copyWith(fontWeight: FontWeight.w200, fontSize: 10),
                     ),
                     SizedBox(
                       height: 6,
                     ),
                     Container(
+
                       height: 40,
                       width: 200,
                       decoration: BoxDecoration(
+                          color: iconColor(context),
                           borderRadius: BorderRadius.circular(5),
                           border: Border.all(width: 1)),
                       child: Row(
@@ -86,7 +88,7 @@ class _LanguageAndRegionScreenState extends State<LanguageAndRegionScreen> {
                     Text(
                       "Choose language",
                       style:
-                          TextStyle(fontWeight: FontWeight.w200, fontSize: 10),
+                      bodyTextStyle(context).copyWith(fontWeight: FontWeight.w200, fontSize: 10),
                     ),
                     SizedBox(
                       height: 6,
@@ -95,6 +97,7 @@ class _LanguageAndRegionScreenState extends State<LanguageAndRegionScreen> {
                       height: 40,
                       width: 200,
                       decoration: BoxDecoration(
+                        color: iconColor(context),
                           borderRadius: BorderRadius.circular(5),
                           border: Border.all(width: 1)),
                       child: Row(

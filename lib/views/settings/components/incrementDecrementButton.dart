@@ -63,7 +63,7 @@ class _NumberTextFieldState extends State<NumberTextField> {
           counterText: '',
           isDense: true,
           filled: true,
-          fillColor: Theme.of(context).colorScheme.surface,
+          fillColor: Theme.of(context).colorScheme.primary,
           contentPadding: widget.contentPadding.copyWith(right: 0),
           suffixIconConstraints: BoxConstraints(
               maxHeight: widget.arrowsHeight, maxWidth: widget.arrowsWidth + widget.contentPadding.right),

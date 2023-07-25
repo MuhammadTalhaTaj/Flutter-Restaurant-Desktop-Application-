@@ -8,11 +8,12 @@ class OrderCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Theme.of(context)
                 .colorScheme
-                .primary,
+                .primaryContainer,
             borderRadius: BorderRadius.circular(15)
         ),
         width: double.infinity,
@@ -26,7 +27,7 @@ class OrderCardView extends StatelessWidget {
                   children: [
                     Text(
                       'Order #35',
-                      style: headingTextStyle()
+                      style: headingTextStyle(context)
                           .copyWith(fontSize: 20),
                     ),
                     SizedBox(width: 15),
@@ -38,7 +39,7 @@ class OrderCardView extends StatelessWidget {
                 ),
                 Text(
                   '\$42',
-                  style: headingTextStyle().copyWith(
+                  style: headingTextStyle(context).copyWith(
                       fontSize: 20, color: Colors.white70),
                 )
               ],

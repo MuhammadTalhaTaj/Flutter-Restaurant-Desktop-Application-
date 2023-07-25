@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
 import '../../../components/dropDownButton.dart';
 const List<String> list = <String>['All Orders', 'Main Orders', 'Others', 'Four'];
@@ -32,7 +33,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(value,style: bodyTextStyle(context).copyWith(fontSize: 14),),
         );
       }).toList(),
     );

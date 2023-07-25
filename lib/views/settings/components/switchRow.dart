@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 
 class SwitchRow extends StatefulWidget {
   String text;
@@ -20,7 +21,7 @@ class _SwitchRowState extends State<SwitchRow> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(width:160,child: Text(widget.text,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),
+          SizedBox(width:160,child: Text(widget.text,style: bodyTextStyle(context).copyWith(fontWeight: FontWeight.bold,fontSize: 17),)),
           Switch(
             splashRadius: 50.0,
             value: widget.forAndroid,

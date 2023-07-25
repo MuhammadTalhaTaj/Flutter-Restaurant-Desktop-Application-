@@ -12,7 +12,7 @@ class CustomElevatedButton extends StatelessWidget {
             width: 400,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.onSecondaryContainer
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
                 onPressed: () {},
                 child: Text(
