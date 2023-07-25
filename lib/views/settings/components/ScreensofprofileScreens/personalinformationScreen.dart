@@ -30,10 +30,12 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
+                
                 width: 300,
                 height: 50,
                 child: RadioListTile(
-                  title: Text("Male"),
+                 
+                  title: Text("Male",style: bodyTextStyle(context),),
                   value: "male",
                   groupValue: gender,
                   onChanged: (value) {
@@ -48,7 +50,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                 width: 300,
                 height: 50,
                 child: RadioListTile(
-                  title: Text("Female"),
+                  title: Text("Female",style: bodyTextStyle(context),),
                   value: "female",
                   groupValue: gender,
                   onChanged: (value) {

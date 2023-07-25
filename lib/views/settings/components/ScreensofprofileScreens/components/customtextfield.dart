@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 class PICustomTextField extends StatelessWidget {
   final upperText;
   final text;
@@ -11,7 +12,7 @@ class PICustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(upperText,style: TextStyle(fontSize: 11,color: Colors.white70),),
+        Text(upperText,style: bodyTextStyle(context).copyWith(fontSize: 11,),),
         Container(
           height: 35,
           width: 300,

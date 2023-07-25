@@ -59,7 +59,7 @@ class _WelcomeState extends State<Welcome> {
                 child: Container(
 
                   decoration: BoxDecoration(
-                   
+
                     borderRadius: BorderRadius.circular(5),
                     // color: Colors.purple,
                   ),
