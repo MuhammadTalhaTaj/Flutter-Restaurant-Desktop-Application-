@@ -6,8 +6,10 @@ import 'package:intel_comm_flutter/constants/textStyles.dart';
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
     super.key,
-    required this.clr,
+    required this.clr, required this.text1, this.text2,
   });
+  final String text1;
+  final String? text2;
 
   final ColorScheme clr;
 
@@ -29,9 +31,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: BoxDecoration(
                       color: clr.onPrimary,
                       borderRadius: BorderRadius.circular(5)),
-                  child: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: clr.primary,
+                  child: InkWell(
+                    onTap: (){Navigator.of(context).pop();},
+                    child: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      color: clr.primary,
+                    ),
                   ),
                 ),
 
@@ -41,16 +46,18 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Row(
                   children: [
                     Text(
-                      "Dashboard",
-                      style: bodyTextStyle(),
+                      text1,
+                      style: bodyTextStyle(context),
                     ),
                     xgap(),
-                    Icon(Icons.arrow_forward_ios_rounded),
+
+                    text2!=null?Icon(Icons.arrow_forward_ios_rounded):Container(),
+
                     xgap(),
-                    Text(
-                      "Sales Statistics",
-                      style: bodyTextStyle(),
-                    ),
+                    text2!=null?Text(
+                      text2!,
+                      style: bodyTextStyle(context),
+                    ):Container(),
                   ],
                 ),
 

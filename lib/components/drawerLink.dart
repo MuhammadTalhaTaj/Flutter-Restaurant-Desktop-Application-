@@ -19,7 +19,7 @@ class DrawerLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => navigateFunc,
+      onTap: () => navigateFunc(),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
@@ -37,14 +37,14 @@ class DrawerLink extends StatelessWidget {
                 xgap(),
                 Icon(
                   icon,
-                  color: isActive ? clr.onPrimary : null,
+                  color: isActive ? clr.onPrimary : clr.secondary,
                 ),
                 xgap(),
                 Expanded(
                   child: Text(
                     text,
                     style: TextStyle(
-                      color: isActive ? clr.onPrimary : null,
+                      color: isActive ? clr.onPrimary : clr.secondary,
                     ),
                   ),
                 ),

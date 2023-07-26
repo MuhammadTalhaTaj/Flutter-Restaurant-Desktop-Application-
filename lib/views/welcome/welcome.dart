@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:intel_comm_flutter/components/IntelCommLogo.dart';
+import 'package:intel_comm_flutter/constants/textStyles.dart';
 import 'package:intel_comm_flutter/views/signin/signin.dart';
 import 'package:intel_comm_flutter/views/signup/signup.dart';
 
@@ -41,7 +42,7 @@ class _WelcomeState extends State<Welcome> {
                   padding: EdgeInsets.all(8),
                   width: MediaQuery.of(context).size.width * .2,
                   child: Center(
-                    child: Text("sign up"),
+                    child: Text("sign up",style: bodyTextStyle(context),),
                   ),
                 ),
               ),
@@ -56,14 +57,16 @@ class _WelcomeState extends State<Welcome> {
                   );
                 },
                 child: Container(
+
                   decoration: BoxDecoration(
+
                     borderRadius: BorderRadius.circular(5),
                     // color: Colors.purple,
                   ),
                   padding: EdgeInsets.all(8),
                   width: MediaQuery.of(context).size.width * .2,
                   child: Center(
-                    child: Text("sign in"),
+                    child: Text("sign in",style: bodyTextStyle(context),),
                   ),
                 ),
               ),
