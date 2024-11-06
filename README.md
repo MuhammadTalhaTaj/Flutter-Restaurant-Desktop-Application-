@@ -1,3 +1,3 @@
-# intel_comm_flutter
+# Resturant Dashboard
 
 A new Flutter project.
